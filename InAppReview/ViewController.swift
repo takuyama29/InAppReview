@@ -18,12 +18,13 @@ class ViewController: UIViewController {
             SKStoreReviewController.requestReview()
         }
             // iOS 10.3未満の処理
-        else if let url = URL(string: "itms-apps://itunes.apple.com/app/id1274048262?action=write-review") {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:])
-            }
-            else {
-                UIApplication.shared.openURL(url)
+        else {
+            if let url = URL(string: "itms-apps://itunes.apple.com/app/id1274048262?action=write-review") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:])
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
             }
         }
     }
